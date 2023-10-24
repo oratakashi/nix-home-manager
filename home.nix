@@ -34,6 +34,7 @@
       ## include config generated via "p10k configure" manually; zplug cannot edit home manager's zshrc file.
       ## note that I moved it from its original location to /etc/nixos/p10k
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      typeset -g POWERLEVEL9K_LINUX_ICON='\uf179'
     '';
     zplug = {
       enable = true;
