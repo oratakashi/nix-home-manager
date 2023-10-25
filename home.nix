@@ -53,9 +53,11 @@
     };
 
     shellAliases =  {
+      code="flatpak run com.visualstudio.code";
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
       ls = "eza --icons";
       home-update = "home-manager switch";
+      home-edit = "code ~/.config/home-manager";
     };
 
     # profileExtra = ''
