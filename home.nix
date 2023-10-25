@@ -58,6 +58,7 @@
       ls = "eza --icons";
       home-update = "home-manager switch";
       home-edit = "code ~/.config/home-manager";
+      cat = "bat";
     };
 
     # profileExtra = ''
@@ -70,6 +71,19 @@
   programs.java = {
     enable = true;
     package = pkgs.jdk17;
+  };
+
+  # Setup Bat
+  programs.bat = {
+    enable = true;
+    config = {
+      map-syntax = [
+        "*.jenkinsfile:Groovy"
+        "*.props:Java Properties"
+      ];
+      pager = "less -FR";
+      theme = "Nord";
+    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
