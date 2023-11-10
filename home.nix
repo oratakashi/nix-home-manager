@@ -22,6 +22,7 @@
     cmake
     ninja
     clang
+    python311
   ];
 
   # Setup Zsh
