@@ -23,6 +23,7 @@
     ninja
     clang
     python311
+    nodejs_20
   ];
 
   # Setup Zsh
@@ -63,10 +64,15 @@
     };
 
     # profileExtra = ''
-    #   export JAVA_HOME="/home/oratakashi/.jdks/jbr-17.0.8.1"
-    #   export PATH="$JAVA_HOME/bin:$PATH"
+    #   # export JAVA_HOME="/home/oratakashi/.jdks/jbr-17.0.8.1"
+    #   export KOBWEB = "/home/oratakashi/Documents/Tools/kobweb/bin"
+    #   export PATH="$KOBWEB/bin:$PATH"
     # '';
   };
+
+  home.sessionPath = [
+    "/home/oratakashi/Documents/Tools/kobweb/bin"
+  ];
 
   # Setup Java
   programs.java = {
