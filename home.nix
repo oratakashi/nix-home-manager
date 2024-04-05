@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+
+  unstable = import <nixpkgs-unstable> {};
+
+in
+
 {
   
   home.username = "oratakashi";
@@ -16,14 +22,17 @@
     neofetch
 
     # Development Tools
-    scrcpy
+    unstable.scrcpy
+    nixfmt
 
     # Build Tools
     cmake
     ninja
     clang
     python311
-    nodejs_20
+    # nodejs_20
+    unstable.nodejs_21
+    yarn
   ];
 
   # Setup Zsh
@@ -57,6 +66,7 @@
     shellAliases =  {
       code="flatpak run com.visualstudio.code";
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
+      mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
       ls = "eza --icons";
       home-update = "home-manager switch";
       home-edit = "code ~/.config/home-manager";
