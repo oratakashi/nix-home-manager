@@ -2,7 +2,7 @@
 
 let
 
-  unstable = import <nixpkgs-unstable> {};
+  # unstable = import <nixpkgs-unstable> {};
 
 in
 
@@ -22,7 +22,7 @@ in
     neofetch
 
     # Development Tools
-    unstable.scrcpy
+    scrcpy
     nixfmt
 
     # Build Tools
@@ -30,15 +30,16 @@ in
     ninja
     clang
     python311
-    # nodejs_20
-    unstable.nodejs_21
+    nodejs_20
+    # nodejs_17
     yarn
+    android-tools
   ];
 
   # Setup Zsh
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     # dotDir = ".config/zsh";
     initExtra = ''
