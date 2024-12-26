@@ -9,7 +9,7 @@ in
 {
   
   home.username = "oratakashi";
-  home.homeDirectory = "/home/oratakashi";
+  home.homeDirectory = "/Users/oratakashi";
 
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
