@@ -3,14 +3,34 @@
 let
 
   # unstable = import <nixpkgs-unstable> {};
+  isDarwin = pkgs.stdenv.isDarwin;
+  isLinux = pkgs.stdenv.isLinux;
+  isWSL = isLinux && builtins.pathExists "/proc/version" && 
+          builtins.match ".*Microsoft.*" (builtins.readFile "/proc/version") != null;
+
+  # Script untuk mendeteksi OS dan menjalankan perintah yang sesuai
+  refreshScript = pkgs.writeScriptBin "home-refresh-helper" ''
+    #!${pkgs.bash}/bin/bash
+    
+    # Deteksi OS
+    if [[ "$(uname)" == "Darwin" ]]; then
+      OS_SUFFIX="darwin"
+    elif grep -q Microsoft /proc/version 2>/dev/null; then
+      OS_SUFFIX="windows"
+    else
+      OS_SUFFIX="linux"
+    fi
+    
+    # Jalankan home-manager dengan konfigurasi yang sesuai
+    echo "Switching to configuration for $OS_SUFFIX..."
+    home-manager switch --flake ~/.config/home-manager#$OS_SUFFIX
+  '';
 
 in
 
 {
   
   home.username = "oratakashi";
-  home.homeDirectory = "/Users/oratakashi";
-
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
@@ -71,7 +91,8 @@ in
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
       mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
       ls = "eza --icons";
-      home-refresh = "nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager";
+      # home-refresh = "home-manager -- switch --flake ~/.config/home-manager";
+      home-refresh = "home-refresh-helper";
       home-update = "home-manager switch";
       home-edit = "code ~/.config/home-manager";
       cat = "bat";

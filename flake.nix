@@ -12,7 +12,7 @@
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations = {
       # macOS configuration
-      "oratakashi-darwin" = home-manager.lib.homeManagerConfiguration {
+      "darwin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-darwin;
         modules = [ 
           ./home-shared.nix    # Menggunakan path relatif
@@ -21,7 +21,7 @@
       };
       
       # Linux configuration
-      "oratakashi-linux" = home-manager.lib.homeManagerConfiguration {
+      "linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ 
           ./home-shared.nix
@@ -30,7 +30,7 @@
       };
       
       # Windows configuration (WSL)
-      "oratakashi-windows" = home-manager.lib.homeManagerConfiguration {
+      "windows" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         modules = [ 
           ./home-shared.nix
