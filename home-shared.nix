@@ -3,28 +3,6 @@
 let
 
   # unstable = import <nixpkgs-unstable> {};
-  isDarwin = pkgs.stdenv.isDarwin;
-  isLinux = pkgs.stdenv.isLinux;
-  isWSL = isLinux && builtins.pathExists "/proc/version" && 
-          builtins.match ".*Microsoft.*" (builtins.readFile "/proc/version") != null;
-
-  # Script untuk mendeteksi OS dan menjalankan perintah yang sesuai
-  refreshScript = pkgs.writeScriptBin "home-refresh-helper" ''
-    #!${pkgs.bash}/bin/bash
-    
-    # Deteksi OS
-    if [[ "$(uname)" == "Darwin" ]]; then
-      OS_SUFFIX="darwin"
-    elif grep -q Microsoft /proc/version 2>/dev/null; then
-      OS_SUFFIX="windows"
-    else
-      OS_SUFFIX="linux"
-    fi
-    
-    # Jalankan home-manager dengan konfigurasi yang sesuai
-    echo "Switching to configuration for $OS_SUFFIX..."
-    home-manager switch --flake ~/.config/home-manager#$OS_SUFFIX
-  '';
 
 in
 
@@ -93,7 +71,18 @@ in
       ls = "eza --icons";
       # home-refresh = "home-manager -- switch --flake ~/.config/home-manager";
       # home-update = "home-manager switch";
-      home-update = "home-refresh-helper";
+      home-update = ''
+        if [[ "$(uname)" == "Darwin" ]]; then
+          echo "Switching to macOS configuration..."
+          home-manager switch --flake ~/.config/home-manager#darwin
+        elif grep -q Microsoft /proc/version 2>/dev/null; then
+          echo "Switching to Windows (WSL) configuration..."
+          home-manager switch --flake ~/.config/home-manager#windows
+        else
+          echo "Switching to Linux configuration..."
+          home-manager switch --flake ~/.config/home-manager#linux
+        fi
+      '';
       home-edit = "code ~/.config/home-manager";
       cat = "bat";
     };
