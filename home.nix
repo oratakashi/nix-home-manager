@@ -24,6 +24,8 @@ in
     # Development Tools
     scrcpy
     nixfmt
+    php
+    php83Packages.composer
 
     # Build Tools
     cmake
@@ -65,7 +67,7 @@ in
     };
 
     shellAliases =  {
-      code="flatpak run com.visualstudio.code";
+      # code="flatpak run com.visualstudio.code";
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
       mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
       ls = "eza --icons";
