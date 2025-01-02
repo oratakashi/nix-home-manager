@@ -5,9 +5,9 @@ Home Manager configuration files
 
 - Install the Nix package manager : 
 
-```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-```
+  ```
+  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+  ```
 
 - Clone this repo to `~/.config/home-manager` by running:
 
