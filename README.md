@@ -1,9 +1,10 @@
 # home.nix
+
 Home Manager configuration files
 
 ## Installation
 
-- Install the Nix package manager : 
+- Install the Nix package manager :
 
   ```
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -17,8 +18,22 @@ Home Manager configuration files
 
 - Run initial configuration on your specifict platform:
 
-  - MacOS : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#darwin`
-  - Linux : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#linux`
-  - Windows / WSL : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#windows`
+  - MacOS :
+
+    ```
+    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#darwin
+    ```
+
+  - Linux :
+
+    ```
+    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#linux
+    ```
+
+  - Windows / WSL :
+
+    ```
+    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#windows
+    ```
 
 - Run `home-update`
