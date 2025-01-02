@@ -15,8 +15,10 @@ Home Manager configuration files
   nix-shell -p git --command "git clone git@github.com:oratakashi/nix-home-manager.git $HOME/.config/home-manager"
   ```
 
-- Edit `home.nix`, change at least `home.homeDirectory` to match yours.
+- Run initial configuration on your specifict platform:
 
-- Run `nix run github:nix-community/home-manager -- switch --flake .`
+  - MacOS : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#darwin`
+  - Linux : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#linux`
+  - Windows / WSL : `nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#windows`
 
-- Run `home-manager switch`
+- Run `home-update`
