@@ -71,6 +71,7 @@ in
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
       mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
       ls = "eza --icons";
+      home-refresh = "nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager";
       home-update = "home-manager switch";
       home-edit = "code ~/.config/home-manager";
       cat = "bat";

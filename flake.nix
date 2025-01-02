@@ -1,11 +1,7 @@
 {
-  description = "Oratakashi Nix System";
+  description = "Oratakashi Cross-Platform Nix System";
 
-  # inputs are other flakes you use within your own flake, dependencies
-  # if you will
   inputs = {
-    # unstable has the 'freshest' packages you will find, even the AUR
-    # doesn't do as good as this, and it's all precompiled.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,14 +9,33 @@
     };
   };
 
-  # In this context, outputs are mostly about getting home-manager what it
-  # needs since it will be the one using the flake
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations = {
-      "oratakashi" = home-manager.lib.homeManagerConfiguration {
-        # darwin is the macOS kernel and x86_64 means Intel-based macOS
+      # macOS configuration
+      "oratakashi-darwin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-        modules = [ ./home.nix ];
+        modules = [ 
+          ./home-shared.nix    # Menggunakan path relatif
+          ./home-darwin.nix    # Relatif terhadap lokasi flake.nix
+        ];
+      };
+      
+      # Linux configuration
+      "oratakashi-linux" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [ 
+          ./home-shared.nix
+          ./home-linux.nix 
+        ];
+      };
+      
+      # Windows configuration (WSL)
+      "oratakashi-windows" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [ 
+          ./home-shared.nix
+          ./home-windows.nix 
+        ];
       };
     };
   };
