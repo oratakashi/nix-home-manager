@@ -73,13 +73,13 @@ in
       # home-update = "home-manager switch";
       home-update = ''
         if [[ "$(uname)" == "Darwin" ]]; then
-          echo "Switching to macOS configuration..."
+          echo "Installing macOS configuration..."
           home-manager switch --flake ~/.config/home-manager#darwin
         elif grep -q Microsoft /proc/version 2>/dev/null; then
-          echo "Switching to Windows (WSL) configuration..."
+          echo "Installing Windows (WSL) configuration..."
           home-manager switch --flake ~/.config/home-manager#windows
         else
-          echo "Switching to Linux configuration..."
+          echo "Installing Linux configuration..."
           home-manager switch --flake ~/.config/home-manager#linux
         fi
       '';
