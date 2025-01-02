@@ -92,8 +92,8 @@ in
       mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
       ls = "eza --icons";
       # home-refresh = "home-manager -- switch --flake ~/.config/home-manager";
-      home-refresh = "home-refresh-helper";
-      home-update = "home-manager switch";
+      # home-update = "home-manager switch";
+      home-update = "home-refresh-helper";
       home-edit = "code ~/.config/home-manager";
       cat = "bat";
     };
