@@ -21,9 +21,21 @@
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.oratakashi = import ./home-darwin.nix;
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.oratakashi = { pkgs, ... }: {
+              home = {
+                username = "oratakashi";
+                homeDirectory = "/Users/oratakashi";
+                stateVersion = "23.11";
+              };
+              imports = [ 
+                ./home-shared.nix
+                ./home-darwin.nix 
+              ];
+            };
+          };
         }
       ];
     };

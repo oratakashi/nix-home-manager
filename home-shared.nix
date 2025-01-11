@@ -21,7 +21,6 @@ in
 
     # Development Tools
     scrcpy
-    nixfmt
     kdoctor
     php
     php83Packages.composer
@@ -75,18 +74,6 @@ in
       ls = "eza --icons";
       # home-refresh = "home-manager -- switch --flake ~/.config/home-manager";
       # home-update = "home-manager switch";
-      home-update = ''
-        if [[ "$(uname)" == "Darwin" ]]; then
-          echo "Installing macOS configuration..."
-          home-manager switch --flake ~/.config/home-manager#darwin
-        elif grep -q Microsoft /proc/version 2>/dev/null; then
-          echo "Installing Windows (WSL) configuration..."
-          home-manager switch --flake ~/.config/home-manager#windows
-        else
-          echo "Installing Linux configuration..."
-          home-manager switch --flake ~/.config/home-manager#linux
-        fi
-      '';
       home-edit = "code ~/.config/home-manager";
       cat = "bat";
     };

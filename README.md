@@ -20,8 +20,17 @@ Home Manager configuration files
 
   - MacOS :
 
+    - Run Initial Setup for Nix Darwin
+
     ```
-    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#darwin
+    nix build  ~/.config/home-manager#darwinConfigurations.oratakashi.system
+    ```
+
+    - Run Nix Darwin Switch
+
+    ```
+    cd ~/.config/home-manager
+    ./result/sw/bin/darwin-rebuild switch --flake .#oratakashi
     ```
 
   - Linux :
