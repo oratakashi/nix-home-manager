@@ -7,9 +7,26 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, darwin, ... }: {
+    # Konfigurasi Darwin System
+    darwinConfigurations."oratakashi" = darwin.lib.darwinSystem {
+      system = "x86_64-darwin";
+      modules = [
+        ./darwin-configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.oratakashi = import ./home-darwin.nix;
+        }
+      ];
+    };
     homeConfigurations = {
       # macOS configuration
       "darwin" = home-manager.lib.homeManagerConfiguration {
@@ -18,6 +35,9 @@
           ./home-shared.nix    # Menggunakan path relatif
           ./home-darwin.nix    # Relatif terhadap lokasi flake.nix
         ];
+        extraSpecialArgs = {
+          inherit darwin;
+        };
       };
       
       # Linux configuration
