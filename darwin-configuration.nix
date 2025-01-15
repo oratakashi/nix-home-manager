@@ -10,7 +10,7 @@
 
   # Konfigurasi homebrew
   homebrew = {
-    enable = false;
+    enable = true;
     onActivation = {
       autoUpdate = false;
       # cleanup = "zap";
@@ -26,7 +26,7 @@
 
     # Mac Apps (Casks)
     casks = [
-      # "google-chrome"
+      "google-chrome"
     ];
 
     # Mac App Store Apps
@@ -45,7 +45,11 @@
   };
 
   # System settings dan konfigurasi lainnya
-  system.defaults.dock.autohide = false;
+  system.defaults.dock = {
+    autohide = true;
+    autohide-time-modifier = 0.5;
+    autohide-delay = 0.0;
+  };
   system.defaults.finder.AppleShowAllExtensions = true;
 
   # Definisikan users yang valid
