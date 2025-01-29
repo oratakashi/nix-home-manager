@@ -3,6 +3,10 @@
 {
   home.homeDirectory = "/home/oratakashi";
 
+  home.sessionPath = [
+    "/sbin"
+  ];
+
   # Tambahkan konfigurasi Linux lainnya
   programs.zsh.shellAliases = {
     # ... alias lainnya ...
