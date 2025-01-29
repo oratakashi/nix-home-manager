@@ -16,6 +16,7 @@ in
   # environment.
   home.packages = with pkgs; [
     # Terminal Tools
+    git
     eza
     # neofetch
     fastfetch
