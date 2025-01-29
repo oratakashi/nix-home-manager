@@ -78,6 +78,7 @@ in
       home-edit = "code ~/.config/home-manager";
       cat = "bat";
       neofetch = "fastfetch";
+      nix-clear="nix-collect-garbage -d"
     };
 
     # profileExtra = ''
