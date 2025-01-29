@@ -89,6 +89,7 @@ in
 
   home.sessionPath = [
     "/home/oratakashi/Documents/Tools/kobweb/bin"
+    "/sbin"
   ];
 
   # Setup Java
