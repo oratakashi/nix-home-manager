@@ -17,7 +17,8 @@ in
   home.packages = with pkgs; [
     # Terminal Tools
     eza
-    neofetch
+    # neofetch
+    fastfetch
 
     # Development Tools
     scrcpy
@@ -76,6 +77,7 @@ in
       # home-update = "home-manager switch";
       home-edit = "code ~/.config/home-manager";
       cat = "bat";
+      neofetch = "fastfetch";
     };
 
     # profileExtra = ''

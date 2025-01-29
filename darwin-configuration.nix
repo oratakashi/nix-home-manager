@@ -13,7 +13,7 @@
     enable = true;
     onActivation = {
       autoUpdate = false;
-      # cleanup = "zap";
+      cleanup = "zap";
       upgrade = false;
     };
     
@@ -27,6 +27,7 @@
     # Mac Apps (Casks)
     casks = [
       "google-chrome"
+      "1password"
     ];
 
     # Mac App Store Apps
