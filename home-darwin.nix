@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     cocoapods
     wget
+    kdoctor
     # Package macOS spesifik lainnya bisa ditambahkan di sini
     (pkgs.writeScriptBin "setup-kobweb" ''
       #!/usr/bin/env bash

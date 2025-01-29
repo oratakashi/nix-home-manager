@@ -36,13 +36,13 @@ Home Manager configuration files
   - Linux :
 
     ```
-    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#linux
+    nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager#linux
     ```
 
   - Windows / WSL :
 
     ```
-    nix run github:nix-community/home-manager switch --flake ~/.config/home-manager#windows
+    nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager#windows
     ```
 
 - Run `home-update`

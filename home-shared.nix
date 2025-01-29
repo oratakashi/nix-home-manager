@@ -22,7 +22,6 @@ in
 
     # Development Tools
     scrcpy
-    kdoctor
     php
     php83Packages.composer
 
