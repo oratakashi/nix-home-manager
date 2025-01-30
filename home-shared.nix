@@ -34,7 +34,7 @@ in
     nodejs_20
     # nodejs_17
     yarn
-    android-tools
+    # android-tools
   ];
 
   # Setup Zsh
