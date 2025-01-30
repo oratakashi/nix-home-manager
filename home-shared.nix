@@ -21,6 +21,7 @@ in
     # neofetch
     fastfetch
     btop
+    htop
 
     # Development Tools
     scrcpy
