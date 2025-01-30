@@ -20,6 +20,7 @@ in
     eza
     # neofetch
     fastfetch
+    btop
 
     # Development Tools
     scrcpy
