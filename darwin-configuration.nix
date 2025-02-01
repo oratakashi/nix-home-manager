@@ -28,6 +28,7 @@
     casks = [
       "google-chrome"
       "1password"
+      "warp"
     ];
 
     # Mac App Store Apps
