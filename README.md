@@ -43,8 +43,16 @@ Home Manager configuration files
 
   - Linux :
 
+    - Run Home Manager Switch 
+
     ```
     nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager#linux
+    ```
+
+    - Change default shell to zsh
+
+    ```
+    sudo usermod -s $(which zsh) oratakashi
     ```
 
   - Windows / WSL :
