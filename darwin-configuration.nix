@@ -19,6 +19,7 @@
     
     # Homebrew Packages (CLI Tools)
     brews = [
+      "cloudflared"
       # "mas"              # Mac App Store CLI
       # "kobweb"           # Kobweb CLI
       # "gh"               # GitHub CLI
@@ -27,8 +28,11 @@
     # Mac Apps (Casks)
     casks = [
       "google-chrome"
+      "firefox"
       "1password"
+      "1password-cli"
       "warp"
+      "android-platform-tools"
     ];
 
     # Mac App Store Apps
