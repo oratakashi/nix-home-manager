@@ -29,6 +29,7 @@
     casks = [
       "google-chrome"
       "firefox"
+      "arc"
       "1password"
       "1password-cli"
       "warp"
