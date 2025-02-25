@@ -62,3 +62,11 @@ Home Manager configuration files
     ```
 
 - Run `home-update`
+
+## Fix & Patch
+
+### Android Emulator Fix on Hackintosh
+
+```
+cp ~/.config/home-manager/emulator-fix-hackintosh/emulatorfix.plist ~/Library/LaunchAgents/
+```
