@@ -2,19 +2,19 @@
 
 {
   # State version untuk nix-darwin
-  system.stateVersion = 4;  # Versi terbaru dari nix-darwin
+  system.stateVersion = 5;  # Versi terbaru dari nix-darwin
   # Izinkan unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
-  nix.useDaemon = true;
+  # nix.useDaemon = true;
 
   # Konfigurasi homebrew
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = true;
       cleanup = "zap";
-      upgrade = false;
+      upgrade = true;
     };
     
     # Homebrew Packages (CLI Tools)
