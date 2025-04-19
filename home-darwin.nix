@@ -43,4 +43,9 @@
     # ... alias lainnya ...
     home-update = "darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
   };
+
+  programs.fish.shellAliases = {
+    # ... alias lainnya ...
+    home-update = "darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
+  };
 }

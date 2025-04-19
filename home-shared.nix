@@ -39,9 +39,64 @@ in
     # android-tools
   ];
 
+  # Setup Starship
+  programs.starship = {
+    enable = true;
+		enableFishIntegration = true;
+  };
+
+  # Setup Fish
+  programs.fish = {
+    enable = true;
+
+    shellAliases =  {
+      # code="flatpak run com.visualstudio.code";
+      mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
+      mirror-vivo = "scrcpy -Sw --always-on-top --no-audio -s 10DDCF0F62000BG";
+      ls = "eza --icons";
+      # home-refresh = "home-manager -- switch --flake ~/.config/home-manager";
+      # home-update = "home-manager switch";
+      home-edit = "code ~/.config/home-manager";
+      cat = "bat";
+      neofetch = "fastfetch";
+      nix-clear="nix-collect-garbage -d";
+    };
+
+    interactiveShellInit = ''
+      set -gx LANG en_US.UTF-8
+      set -gx LC_ALL en_US.UTF-8
+
+      if not functions -q fisher
+        echo "Installing fisher..."
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+      end
+      
+      # Tide Prompt Setup
+      if not functions -q tide
+        if type -q fisher
+          fisher install IlanCosman/tide@v5
+        end
+      end
+
+      # Optional: Set icon for Linux (similar to POWERLEVEL9K_LINUX_ICON)
+      set -gx POWERLEVEL9K_LINUX_ICON \uf179
+
+      # Inject PATH dari Nix
+      set -l nix_paths \
+        /Users/oratakashi/.nix-profile/bin \
+        /etc/profiles/per-user/oratakashi/bin
+
+      for p in $nix_paths
+        if not contains $p $fish_user_paths
+          set -Ua fish_user_paths $p
+        end
+      end
+    '';
+  };
+
   # Setup Zsh
   programs.zsh = {
-    enable = true;
+    enable = false;
     autosuggestion.enable = true;
     enableCompletion = true;
     # dotDir = ".config/zsh";
@@ -53,9 +108,26 @@ in
 
       export LANG="en_US.UTF-8";
       export LC_ALL="en_US.UTF-8";
+
+      # Zplug Setup
+      if [ ! -d "$HOME/.zplug" ]; then
+        git clone https://github.com/zplug/zplug "$HOME/.zplug"
+      fi
+      export ZPLUG_HOME="$HOME/.zplug"
+      if [ -f "$ZPLUG_HOME/init.zsh" ]; then
+        source "$ZPLUG_HOME/init.zsh"
+        autoload -Uz zplug
+
+        if type zplug &> /dev/null; then
+          zplug "romkatv/powerlevel10k", as:theme, depth:1
+          zplug load
+        else
+          echo "zplug masih belum ter-load, cek konfigurasi!"
+        fi
+      fi
     '';
     zplug = {
-      enable = true;
+      enable = false;
       plugins = [
         { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
       # Installations with additional options. For the list of options,
