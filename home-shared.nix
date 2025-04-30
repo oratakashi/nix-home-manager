@@ -66,18 +66,6 @@ in
       set -gx LANG en_US.UTF-8
       set -gx LC_ALL en_US.UTF-8
 
-      if not functions -q fisher
-        echo "Installing fisher..."
-        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-      end
-      
-      # Tide Prompt Setup
-      if not functions -q tide
-        if type -q fisher
-          fisher install IlanCosman/tide@v5
-        end
-      end
-
       # Optional: Set icon for Linux (similar to POWERLEVEL9K_LINUX_ICON)
       set -gx POWERLEVEL9K_LINUX_ICON \uf179
 
