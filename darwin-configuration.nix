@@ -20,6 +20,7 @@
     # Homebrew Packages (CLI Tools)
     brews = [
       "cloudflared"
+      "jmeter"
       # "mas"              # Mac App Store CLI
       # "kobweb"           # Kobweb CLI
       # "gh"               # GitHub CLI
@@ -34,6 +35,7 @@
       "1password-cli"
       "warp"
       "android-platform-tools"
+      "teamviewer"
     ];
 
     # Mac App Store Apps
