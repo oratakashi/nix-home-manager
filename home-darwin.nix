@@ -41,11 +41,11 @@
 
   programs.zsh.shellAliases = {
     # ... alias lainnya ...
-    home-update = "darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
+    home-update = "sudo darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
   };
 
   programs.fish.shellAliases = {
     # ... alias lainnya ...
-    home-update = "darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
+    home-update = "sudo darwin-rebuild switch --flake ~/.config/home-manager#oratakashi";
   };
 }

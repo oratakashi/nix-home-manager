@@ -3,6 +3,7 @@
 {
   # State version untuk nix-darwin
   system.stateVersion = 5;  # Versi terbaru dari nix-darwin
+  system.primaryUser = "oratakashi"; # User utama yang digunakan
   # Izinkan unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
