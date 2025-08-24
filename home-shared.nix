@@ -25,8 +25,14 @@ in
 
     # Development Tools
     scrcpy
-    php
-    php83Packages.composer
+    php84
+    php84Extensions.opcache
+    php84Extensions.mbstring
+    php84Extensions.curl
+    php84Extensions.openssl
+    php84Extensions.pdo
+    php84Extensions.pdo_mysql
+    php84Packages.composer
 
     # Build Tools
     cmake
