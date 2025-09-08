@@ -14,7 +14,7 @@
   };
 
   outputs = { nixpkgs, home-manager, darwin, ... }: {
-    # Konfigurasi Darwin System
+    # Konfigurasi Darwin System (Intel & Apple Silicon)
     darwinConfigurations."oratakashi" = darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       modules = [
@@ -39,13 +39,51 @@
         }
       ];
     };
+
+    # Apple Silicon / ARM64 variant
+    darwinConfigurations."oratakashi-arm64" = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./darwin-configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.oratakashi = { pkgs, ... }: {
+              home = {
+                username = "oratakashi";
+                homeDirectory = "/Users/oratakashi";
+                stateVersion = "23.11";
+              };
+              imports = [ 
+                ./home-shared.nix
+                ./home-darwin.nix 
+              ];
+            };
+          };
+        }
+      ];
+    };
     homeConfigurations = {
-      # macOS configuration
+      # macOS configuration (Intel)
       "darwin" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-darwin;
         modules = [ 
           ./home-shared.nix    # Menggunakan path relatif
           ./home-darwin.nix    # Relatif terhadap lokasi flake.nix
+        ];
+        extraSpecialArgs = {
+          inherit darwin;
+        };
+      };
+
+      # macOS configuration (Apple Silicon / aarch64)
+      "darwin-aarch64" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [ 
+          ./home-shared.nix
+          ./home-darwin.nix 
         ];
         extraSpecialArgs = {
           inherit darwin;
