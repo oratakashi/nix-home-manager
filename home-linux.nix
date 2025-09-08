@@ -23,4 +23,7 @@
         fi
       '';
   };
+  programs.fish.shellAliases = {
+    home-update = "home-manager switch --flake ~/.config/home-manager#linux";
+  };
 }
