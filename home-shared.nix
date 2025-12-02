@@ -40,6 +40,7 @@ in
     clang
     python311
     nodejs_20
+    gnupg
     # nodejs_17
     yarn
     # android-tools

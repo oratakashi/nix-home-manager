@@ -20,7 +20,7 @@
     
     # Homebrew Packages (CLI Tools)
     brews = [
-      "cloudflared"
+      # "cloudflared"c
       "jmeter"
       # "mas"              # Mac App Store CLI
       # "kobweb"           # Kobweb CLI
