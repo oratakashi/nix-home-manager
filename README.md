@@ -76,10 +76,12 @@ Before you begin, ensure you have the following:
 
 | Platform | Architecture | Configuration |
 |----------|--------------|---------------|
-| macOS | Intel (x86_64) | `darwinConfigurations.oratakashi` |
-| macOS | Apple Silicon (aarch64) | `darwinConfigurations.oratakashi-arm64` |
+| macOS | Intel (x86_64) | `darwinConfigurations.<username>` (default: `oratakashi`) |
+| macOS | Apple Silicon (aarch64) | `darwinConfigurations.<username>-arm64` (default: `oratakashi-arm64`) |
 | Linux | x86_64 | `homeConfigurations.linux` |
 | Windows | WSL (x86_64) | `homeConfigurations.windows` |
+
+> **Note:** `<username>` should be replaced with your actual username after customization. See [Adjusting Configuration for Your Username](#adjusting-configuration-for-your-username).
 
 ---
 
@@ -112,6 +114,8 @@ nix-shell -p git --command "git clone git@github.com:oratakashi/nix-home-manager
 ```bash
 nix-shell -p git --command "git clone https://github.com/oratakashi/nix-home-manager.git $HOME/.config/home-manager"
 ```
+
+> **Note:** You can also fork this repository to your own GitHub account and clone from your fork if you want to maintain your own customizations.
 
 ### Step 3: Apply Configuration
 
@@ -559,8 +563,10 @@ Ensure flakes are enabled in your Nix configuration. The installer from Determin
 Some darwin-rebuild operations may require elevated permissions. Try running with sudo:
 
 ```bash
-sudo darwin-rebuild switch --flake ~/.config/home-manager#oratakashi
+sudo darwin-rebuild switch --flake ~/.config/home-manager#<username>
 ```
+
+Replace `<username>` with your actual username (or `<username>-arm64` for Apple Silicon).
 
 > **Note:** The initial installation typically doesn't require sudo, but subsequent system-level changes might.
 
