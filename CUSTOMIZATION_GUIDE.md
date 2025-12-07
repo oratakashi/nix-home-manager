@@ -98,9 +98,15 @@ Update session path (if you use it):
 
 ```nix
 home.sessionPath = [
-  "/home/yourusername/Documents/Tools/kobweb/bin"  # Change here
+  "/home/yourusername/Documents/Tools/kobweb/bin"  # For Linux/WSL
+  # Or for macOS: "/Users/yourusername/Documents/Tools/kobweb/bin"
 ];
 ```
+
+**Note:** The path format depends on your platform:
+- Linux/WSL: `/home/yourusername/...`
+- macOS: `/Users/yourusername/...`
+- Windows (WSL): `/mnt/c/Users/yourusername/...`
 
 ### 3. Update `darwin-configuration.nix` (macOS only)
 

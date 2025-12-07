@@ -421,10 +421,11 @@ set -l nix_paths \
   /etc/profiles/per-user/yourusername/bin          # Change here
 ```
 
-Also update the session path if needed:
+Also update the session path if needed (note: adjust the path format for your platform):
 ```nix
 home.sessionPath = [
-  "/home/yourusername/Documents/Tools/kobweb/bin"  # Change here
+  "/home/yourusername/Documents/Tools/kobweb/bin"  # For Linux/WSL
+  # Or for macOS: "/Users/yourusername/Documents/Tools/kobweb/bin"
 ];
 ```
 
