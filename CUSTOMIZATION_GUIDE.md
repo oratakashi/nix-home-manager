@@ -82,13 +82,13 @@ darwinConfigurations."yourusername-arm64" = darwin.lib.darwinSystem {
 Change the username:
 
 ```nix
-home.username = "yourusername";  # Line 11 - Change this
+home.username = "yourusername";  # Change this
 ```
 
 Update PATH variables in the Fish shell configuration:
 
 ```nix
-# In programs.fish.interactiveShellInit (around lines 80-82):
+# In programs.fish.interactiveShellInit:
 set -l nix_paths \
   /Users/yourusername/.nix-profile/bin \           # Change here
   /etc/profiles/per-user/yourusername/bin          # Change here
@@ -97,7 +97,6 @@ set -l nix_paths \
 Update session path (if you use it):
 
 ```nix
-# Around line 161:
 home.sessionPath = [
   "/home/yourusername/Documents/Tools/kobweb/bin"  # Change here
 ];
@@ -108,14 +107,12 @@ home.sessionPath = [
 Change the primary user:
 
 ```nix
-# Line 6:
 system.primaryUser = "yourusername";  # Change here
 ```
 
 Update user definition:
 
 ```nix
-# Lines 66-69:
 users.users.yourusername = {          # Change here
   name = "yourusername";              # Change here
   home = "/Users/yourusername";       # Change here
@@ -127,14 +124,12 @@ users.users.yourusername = {          # Change here
 Change the home directory:
 
 ```nix
-# Line 4:
 home.homeDirectory = "/Users/yourusername";  # Change here
 ```
 
 Update shell aliases:
 
 ```nix
-# Lines 44 and 49:
 programs.zsh.shellAliases = {
   home-update = "sudo darwin-rebuild switch --flake ~/.config/home-manager#yourusername";  # Change here
 };
@@ -149,7 +144,6 @@ programs.fish.shellAliases = {
 Change the home directory:
 
 ```nix
-# Line 4:
 home.homeDirectory = "/home/yourusername";  # Change here
 ```
 
@@ -158,7 +152,6 @@ home.homeDirectory = "/home/yourusername";  # Change here
 Change the Windows home directory:
 
 ```nix
-# Line 4:
 home.homeDirectory = "/mnt/c/Users/yourusername";  # Change here
 ```
 
