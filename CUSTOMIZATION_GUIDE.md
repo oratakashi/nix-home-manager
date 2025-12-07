@@ -183,6 +183,8 @@ grep -r "oratakashi" ~/.config/home-manager --include="*.nix"
 
 This should return **no results** if all changes were made correctly. If you still see results, review the files and update any remaining references.
 
+**Note:** Documentation files (README.md, CUSTOMIZATION_GUIDE.md) may contain "oratakashi" as examples, which is expected and fine. The command above only searches `.nix` files.
+
 ### 3. Show Available Configurations
 
 ```bash
@@ -256,13 +258,15 @@ Compare this with what you set in the configuration files.
 
 ### Still seeing references to old username
 
-**Solution:** Run a comprehensive search:
+**Solution:** Run a search to find remaining references in configuration files:
 
 ```bash
-grep -r "oratakashi" ~/.config/home-manager --include="*.nix" --include="*.md"
+grep -r "oratakashi" ~/.config/home-manager --include="*.nix"
 ```
 
 Review and update any remaining files that still reference the old username.
+
+**Note:** Documentation files may contain "oratakashi" as examples, which is expected and fine.
 
 ### Nix flake check fails
 

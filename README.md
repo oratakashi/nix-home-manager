@@ -358,10 +358,10 @@ The following table shows all files that need to be updated and what to change:
 
 | File | What to Change | Example |
 |------|----------------|---------|
-| `flake.nix` | Darwin configuration names, `users.oratakashi`, username and homeDirectory | `"oratakashi"` → `"yourusername"` |
-| `home-shared.nix` | `home.username`, PATH variables | `"oratakashi"` → `"yourusername"` |
-| `darwin-configuration.nix` | `system.primaryUser`, `users.users` section | `oratakashi` → `yourusername` |
-| `home-darwin.nix` | `home.homeDirectory`, shell aliases | `/Users/oratakashi` → `/Users/yourusername` |
+| `flake.nix` | Configuration names (`darwinConfigurations`), `users.oratakashi` section, username and homeDirectory fields | `"oratakashi"` → `"yourusername"` |
+| `home-shared.nix` | `home.username`, PATH variables in Fish config | `"oratakashi"` → `"yourusername"` |
+| `darwin-configuration.nix` | `system.primaryUser`, `users.users.oratakashi` section | `oratakashi` → `yourusername` |
+| `home-darwin.nix` | `home.homeDirectory`, shell aliases for `home-update` | `/Users/oratakashi` → `/Users/yourusername` |
 | `home-linux.nix` | `home.homeDirectory` | `/home/oratakashi` → `/home/yourusername` |
 | `home-windows.nix` | `home.homeDirectory` | `/mnt/c/Users/oratakashi` → `/mnt/c/Users/yourusername` |
 
@@ -486,10 +486,10 @@ After making all the changes, verify your configuration before applying:
 
 2. **Verify your changes:**
    ```bash
-   # Search for any remaining references to the old username
+   # Search for any remaining references to the old username in Nix files only
    grep -r "oratakashi" ~/.config/home-manager --include="*.nix"
    ```
-   This should return no results if all changes were made correctly.
+   This should return no results if all changes were made correctly (documentation files may still contain "oratakashi" as examples, which is fine).
 
 3. **Show available configurations:**
    ```bash
@@ -548,10 +548,12 @@ echo $HOME
 <details>
 <summary><strong>Still seeing references to old username</strong></summary>
 
-Use this command to find any remaining references:
+Use this command to find any remaining references in Nix configuration files:
 ```bash
-grep -r "oratakashi" ~/.config/home-manager --include="*.nix" --include="*.md"
+grep -r "oratakashi" ~/.config/home-manager --include="*.nix"
 ```
+
+Note: Documentation files (README.md, CUSTOMIZATION_GUIDE.md) may contain "oratakashi" as examples, which is expected and fine.
 
 </details>
 
