@@ -119,6 +119,8 @@ nix-shell -p git --command "git clone https://github.com/oratakashi/nix-home-man
 
 ### Step 3: Apply Configuration
 
+> ⚠️ **Remember:** Before running these commands, make sure you've customized the configuration with your username. The commands below assume you've already updated the configuration files. Replace `<username>` with the username you configured in the customization step.
+
 Choose the appropriate commands for your platform:
 
 <details>
@@ -127,14 +129,24 @@ Choose the appropriate commands for your platform:
 1. **Build the initial configuration:**
 
    ```bash
-   nix build ~/.config/home-manager#darwinConfigurations.oratakashi.system
+   nix build ~/.config/home-manager#darwinConfigurations.<username>.system
+   ```
+   
+   Example: If you customized with username "john", use:
+   ```bash
+   nix build ~/.config/home-manager#darwinConfigurations.john.system
    ```
 
 2. **Apply the configuration:**
 
    ```bash
    cd ~/.config/home-manager
-   ./result/sw/bin/darwin-rebuild switch --flake .#oratakashi
+   ./result/sw/bin/darwin-rebuild switch --flake .#<username>
+   ```
+   
+   Example: If your username is "john":
+   ```bash
+   ./result/sw/bin/darwin-rebuild switch --flake .#john
    ```
 
 3. **For subsequent updates, simply run:**
@@ -151,14 +163,24 @@ Choose the appropriate commands for your platform:
 1. **Build the initial configuration:**
 
    ```bash
-   nix build ~/.config/home-manager#darwinConfigurations.oratakashi-arm64.system
+   nix build ~/.config/home-manager#darwinConfigurations.<username>-arm64.system
+   ```
+   
+   Example: If you customized with username "john", use:
+   ```bash
+   nix build ~/.config/home-manager#darwinConfigurations.john-arm64.system
    ```
 
 2. **Apply the configuration:**
 
    ```bash
    cd ~/.config/home-manager
-   ./result/sw/bin/darwin-rebuild switch --flake .#oratakashi-arm64
+   ./result/sw/bin/darwin-rebuild switch --flake .#<username>-arm64
+   ```
+   
+   Example: If your username is "john":
+   ```bash
+   ./result/sw/bin/darwin-rebuild switch --flake .#john-arm64
    ```
 
 3. **For subsequent updates, simply run:**
