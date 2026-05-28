@@ -37,6 +37,7 @@
       "warp"
       "android-platform-tools"
       "teamviewer"
+      "github-copilot-for-xcode"
     ];
 
     # Mac App Store Apps

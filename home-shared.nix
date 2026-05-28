@@ -56,6 +56,24 @@ in
   programs.fish = {
     enable = true;
 
+    plugins = [
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass.src;
+      }
+    ];
+
+    functions = {
+      nvm = ''
+        if test -s "$HOME/.nvm/nvm.sh"
+          bass source "$HOME/.nvm/nvm.sh" --no-use ';' nvm $argv
+        else
+          echo "nvm script not found at $HOME/.nvm/nvm.sh"
+          return 127
+        end
+      '';
+    };
+
     shellAliases =  {
       # code="flatpak run com.visualstudio.code";
       mirror = "scrcpy -Sw --always-on-top --no-audio -s RR8R20A1BPX";
@@ -72,6 +90,7 @@ in
     interactiveShellInit = ''
       set -gx LANG en_US.UTF-8
       set -gx LC_ALL en_US.UTF-8
+      set -gx NVM_DIR "$HOME/.nvm"
 
       # Optional: Set icon for Linux (similar to POWERLEVEL9K_LINUX_ICON)
       set -gx POWERLEVEL9K_LINUX_ICON \uf179
